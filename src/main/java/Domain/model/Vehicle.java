@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Vehicle implements Serializable {
     private Long idVehicle;
     private String name;
-    private boolean available;
+    private String available;
     private double price;
     private String type;
 

@@ -18,27 +18,20 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 /**@WebFilter("/*")
-public class ConnectionFilter implements Filter{
-
-    @MysqlConn
-    private Connection conn;
-
+public class ConnectionFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
-        try {
-            Connection connRequest = this.conn;
-            if (connRequest.getAutoCommit()) {
-                connRequest.setAutoCommit(false);
-            }
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain
+            chain) throws IOException, ServletException {
+        try (Connection conn = DataBaseConnection.getConnection()) {if (conn.getAutoCommit()) {
+            conn.setAutoCommit(false);
+        }
             try {
-                request.setAttribute("conn", connRequest);
+                request.setAttribute("conn", conn);
                 chain.doFilter(request, response);
-                connRequest.commit();
-            } catch (ServiceJdbcException e) {
-                //connRequest.rollback();
-                ((HttpServletResponse) response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                        e.getMessage());
+                conn.commit();
+            } catch (SQLException | ServiceJdbcException e) {
+                conn.rollback();
+                ((HttpServletResponse)response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                 e.printStackTrace();
             }
         } catch (SQLException throwables) {

@@ -5,7 +5,7 @@ import lombok.Builder;
 @Builder
 public record VehicleDto(Long idVehicle,
                          String name,
-                         boolean available,
+                         String available,
                          double price,
                          String type) {
 }

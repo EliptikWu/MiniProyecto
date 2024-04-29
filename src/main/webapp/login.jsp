@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Form Login</title>
+    <title>Veloce Rentals</title>
     <link href="estilo.css" ref="stylesheet"/>
 </head>
 <body>

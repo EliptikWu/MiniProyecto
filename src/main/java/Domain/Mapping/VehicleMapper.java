@@ -10,7 +10,7 @@ public class VehicleMapper {
     public static VehicleDto mapFrom(Vehicle vehicleMapper) {
         return new VehicleDto(vehicleMapper.getIdVehicle(),
                 vehicleMapper.getName(),
-                vehicleMapper.isAvailable(),
+                vehicleMapper.getAvailable(),
                 vehicleMapper.getPrice(),
                 vehicleMapper.getType());
     }

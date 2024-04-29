@@ -1,5 +1,6 @@
 package Controllers;
 
+//*import Service.Impl.LoginServiceSessionImpl;
 import Service.Impl.LoginServiceSessionImpl;
 import Service.LoginService;
 import jakarta.servlet.*;
@@ -10,9 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter({"/students"})//urls que deseamos aplique el filtro
-//si queremos implementar varias pondriamos:
-//@WebFilter({"/students", “/teachers”,”subjects”})
+@WebFilter({"/private/filtro"})
 public class LoginFiltro implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain

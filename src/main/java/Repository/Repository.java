@@ -7,8 +7,6 @@ public interface Repository <T> {
 
     T byId(Long id);
 
-    void save(T t);
-
     void delete(Long id);
 
     void update(T t);
