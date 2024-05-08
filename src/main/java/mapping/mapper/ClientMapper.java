@@ -1,6 +1,6 @@
 package mapping.mapper;
 
-import mapping.Dtos.ClientDto;
+import mapping.dtos.ClientDto;
 import domain.model.Client;
 
 import java.util.List;

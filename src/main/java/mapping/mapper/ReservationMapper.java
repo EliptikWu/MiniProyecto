@@ -1,6 +1,6 @@
 package mapping.mapper;
 
-import mapping.Dtos.ReservationDto;
+import mapping.dtos.ReservationDto;
 import domain.model.Reservation;
 
 import java.util.List;

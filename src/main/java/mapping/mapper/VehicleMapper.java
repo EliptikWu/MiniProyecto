@@ -1,6 +1,6 @@
 package mapping.mapper;
 
-import mapping.Dtos.VehicleDto;
+import mapping.dtos.VehicleDto;
 import domain.model.Vehicle;
 
 import java.util.List;

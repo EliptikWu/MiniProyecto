@@ -1,6 +1,6 @@
 package controllers;
 
-import service.Impl.LoginServiceSessionImpl;
+import service.impl.LoginServiceSessionImpl;
 import service.LoginService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,7 +26,7 @@ public class LoginSessionServlet extends HttpServlet {
         if (USERNAME.equals(username) && PASSWORD.equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
-            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            resp.sendRedirect(req.getContextPath() + "/main.jsp");
         } else {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos no " +
                     "esta autorizado para ingresar a esta página!");
