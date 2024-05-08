@@ -11,10 +11,10 @@
     <title>Veloce Rentals</title>
     <link href="estilo.css" ref="stylesheet"/>
 </head>
-<body>
+<body href="../img/img1.avif">
     <div id="contenedor1">
         <form id="form1" action="loginSession" method="post">
-            <input type="text" name="" placeholder="username"/>
+            <input type="user" name="" placeholder="username"/>
             <hr>
             <input type="password" name="" placeholder="password"/>
             <hr>
