@@ -1,5 +1,7 @@
 package service.impl;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import mapping.dtos.ClientDto;
 import repository.Repository;
 import service.Service;
@@ -10,7 +12,9 @@ import java.util.List;
  *
  * @author <a href=""
  */
+@ApplicationScoped
 public class ClientServiceImpl implements Service<ClientDto> {
+    @Inject
     private Repository<ClientDto> clientRepository;
 
     /**

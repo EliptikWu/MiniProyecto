@@ -1,5 +1,8 @@
 package repository.impl;
 
+import annotations.MysqlConn;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import mapping.dtos.ClientDto;
 import mapping.mapper.ClientMapper;
 import domain.model.Client;
@@ -9,9 +12,10 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@ApplicationScoped
 public class ClientRepositoryJdbcImpl implements Repository<ClientDto> {
-
+    @Inject
+    @MysqlConn
     private Connection conn;
     private ClientDto createClient(ResultSet rs) throws SQLException {
         Client client = new Client();

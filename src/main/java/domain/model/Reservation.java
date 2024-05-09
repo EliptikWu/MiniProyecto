@@ -1,5 +1,6 @@
 package domain.model;
 
+import jakarta.enterprise.context.SessionScoped;
 import lombok.*;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Builder
+@SessionScoped
 public class Reservation implements Serializable {
     private Long idReservation;
     private String name;

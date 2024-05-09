@@ -1,7 +1,10 @@
 package repository.impl;
 
+import annotations.MysqlConn;
 import domain.enums.VehicleAvailable;
 import domain.enums.VehicleType;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import mapping.dtos.VehicleDto;
 import mapping.mapper.VehicleMapper;
 import domain.model.Vehicle;
@@ -11,8 +14,10 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@ApplicationScoped
 public class VehicleRepositoryJdbcImpl implements Repository<VehicleDto> {
+    @Inject
+    @MysqlConn
     private Connection conn;
     private VehicleDto createVehicle(ResultSet rs) throws SQLException {
         Vehicle vehicle = new Vehicle();

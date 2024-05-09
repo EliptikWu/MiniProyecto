@@ -12,7 +12,7 @@ public enum VehicleAvailable {
         this.name = name;
     }
 
-    public List<String> getAvailable() {
+    public List<String> getVehicleAvailable() {
         return Arrays.stream(VehicleAvailable.values()).map(VehicleAvailable::name).toList();
     }
 

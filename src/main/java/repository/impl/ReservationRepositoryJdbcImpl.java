@@ -1,6 +1,9 @@
 package repository.impl;
 
+import annotations.MysqlConn;
 import domain.enums.VehicleAvailable;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import mapping.dtos.ReservationDto;
 import mapping.mapper.ReservationMapper;
 import domain.enums.VehicleType;
@@ -13,8 +16,10 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@ApplicationScoped
 public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto> {
+    @Inject
+    @MysqlConn
     private Connection conn;
     private Reservation createReservation(ResultSet rs) throws SQLException {
         Reservation reservation = new Reservation();
