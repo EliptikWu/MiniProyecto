@@ -2,7 +2,8 @@ package service.impl;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import mapping.dtos.ClientDto;
+import jakarta.inject.Named;
+import mapping.dtos.UserDto;
 import repository.Repository;
 import service.Service;
 
@@ -13,17 +14,18 @@ import java.util.List;
  * @author <a href=""
  */
 @ApplicationScoped
-public class ClientServiceImpl implements Service<ClientDto> {
+public class UserServiceImpl implements Service<UserDto> {
     @Inject
-    private Repository<ClientDto> clientRepository;
+    @Named("User")
+    private Repository<UserDto> userRepository;
 
     /**
      *
      * @return
      */
     @Override
-    public List<ClientDto> list() {
-        return clientRepository.list();
+    public List<UserDto> list() {
+        return userRepository.list();
     }
 
     /**
@@ -32,17 +34,17 @@ public class ClientServiceImpl implements Service<ClientDto> {
      * @return
      */
     @Override
-    public ClientDto byId(Long id) {
-        return clientRepository.byId(id);
+    public UserDto byId(Long id) {
+        return userRepository.byId(id);
     }
 
     @Override
-    public void save(ClientDto t) {
-        clientRepository.save(t);
+    public void update(UserDto t) {
+        userRepository.update(t);
     }
 
     @Override
     public void delete(Long id) {
-        clientRepository.delete(id);
+        userRepository.delete(id);
     }
 }

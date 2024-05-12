@@ -1,6 +1,6 @@
 package mapping.dtos;
 
-import domain.model.Client;
+import domain.model.User;
 import domain.model.Vehicle;
 import lombok.Builder;
 
@@ -11,7 +11,7 @@ public record ReservationDto(Long idReservation,
                              String name,
                              Double price,
                              String description,
-                             Client client,
+                             User user,
                              Vehicle vehicle,
                              LocalDateTime reservationInit,
                              LocalDateTime reservationFinal) {

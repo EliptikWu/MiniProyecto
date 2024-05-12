@@ -18,7 +18,7 @@ public class Reservation implements Serializable {
     private String name;
     private Double price;
     private String description;
-    private Client client;
+    private User user;
     private Vehicle vehicle;
     private LocalDateTime reservationInit;
     private LocalDateTime reservationFinal;

@@ -4,10 +4,11 @@ import annotations.MysqlConn;
 import domain.enums.VehicleAvailable;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import mapping.dtos.ReservationDto;
 import mapping.mapper.ReservationMapper;
 import domain.enums.VehicleType;
-import domain.model.Client;
+import domain.model.User;
 import domain.model.Reservation;
 import domain.model.Vehicle;
 import exceptions.ServiceJdbcException;
@@ -17,6 +18,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 @ApplicationScoped
+@Named("Reservation")
 public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto> {
     @Inject
     @MysqlConn
@@ -26,12 +28,12 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
         reservation.setIdReservation(rs.getLong("idReservation"));
         reservation.setName(rs.getString("name"));
         reservation.setDescription(rs.getString("description"));
-        Client client = new Client();
-        client.setIdClient(rs.getLong("idClient"));
-        client.setName(rs.getString("idName"));
-        client.setEmail(rs.getString("email"));
-        client.setTelephone(rs.getString("telephone"));
-        reservation.setClient(client);
+        User user = new User();
+        user.setIdUser(rs.getLong("idUser"));
+        user.setName(rs.getString("idName"));
+        user.setEmail(rs.getString("email"));
+        user.setTelephone(rs.getString("telephone"));
+        reservation.setUser(user);
         Vehicle vehicle = new Vehicle();
         vehicle.setIdVehicle(rs.getLong("idVehicle"));
         vehicle.setName(rs.getString("name"));
@@ -77,14 +79,14 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
     public void update(ReservationDto reservation) {
         String sql;
         if (reservation.idReservation() != null && reservation.idReservation() > 0) {
-            sql = "UPDATE reservation SET name=?, description=?, client=?, vehicle=? WHERE idReservation=?";
+            sql = "UPDATE reservation SET name=?, description=?, user=?, vehicle=? WHERE idReservation=?";
         } else {
-            sql = "INSERT INTO client (name, description, client, vehicle) VALUES(?,?,?,?)";
+            sql = "INSERT INTO user (name, description, user, vehicle) VALUES(?,?,?,?)";
         }
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, reservation.name());
             pstmt.setString(2, reservation.description());
-            pstmt.setLong(3, reservation.client().getIdClient());
+            pstmt.setLong(3, reservation.user().getIdUser());
             pstmt.setLong(4,reservation.vehicle().getIdVehicle());
 
             if (reservation.idReservation() != null && reservation.idReservation() > 0) {
@@ -112,14 +114,14 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
         Reservation reservation = ReservationMapper.mapFrom(reservationDto);
         if (reservation.getIdReservation() != null && reservation.getIdReservation() > 0) {
             sql = "UPDATE reservation SET name=?, price=?, description=?, " +
-                    "client=?, vehicle=?, reservationInit=?, reservationFinal=? WHERE idReservation=?";
+                    "user=?, vehicle=?, reservationInit=?, reservationFinal=? WHERE idReservation=?";
         } else {
-            sql = "INSERT INTO reservation (name, price, description, client, vehicle, reservationInit, reservationFinal) VALUES (?,?,?,?,?,?,?);";
+            sql = "INSERT INTO reservation (name, price, description, user, vehicle, reservationInit, reservationFinal) VALUES (?,?,?,?,?,?,?);";
         }
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, reservation.getName());
             stmt.setString(2, reservation.getDescription());
-            stmt.setLong(3, reservation.getClient().getIdClient());
+            stmt.setLong(3, reservation.getUser().getIdUser());
             stmt.setLong(4, reservation.getVehicle().getIdVehicle());
             if (reservation.getIdReservation() != null && reservation.getIdReservation() > 0) {
                 stmt.setLong(4, reservation.getIdReservation());

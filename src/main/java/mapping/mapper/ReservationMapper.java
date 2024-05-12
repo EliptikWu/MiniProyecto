@@ -12,7 +12,7 @@ public class ReservationMapper {
                 reservationMapper.getName(),
                 reservationMapper.getPrice(),
                 reservationMapper.getDescription(),
-                reservationMapper.getClient(),
+                reservationMapper.getUser(),
                 reservationMapper.getVehicle(),
                 reservationMapper.getReservationInit(),
                 reservationMapper.getReservationFinal());
@@ -23,7 +23,7 @@ public class ReservationMapper {
                 reservationMapper.name(),
                 reservationMapper.price(),
                 reservationMapper.description(),
-                reservationMapper.client(),
+                reservationMapper.user(),
                 reservationMapper.vehicle(),
                 reservationMapper.reservationInit(),
                 reservationMapper.reservationFinal());

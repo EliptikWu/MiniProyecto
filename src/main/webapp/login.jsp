@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Veloce Rental</title>
-	<link rel="icon" href="logo.ico">
+<title>Veloce Rentals</title>
+	<link rel="icon" href="images/logo.ico">
 <!-- Font Icon -->
 <link rel="stylesheet"
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -32,7 +32,7 @@
 
 					<div class="signin-form">
 						<h2 class="form-title">Sign up</h2>
-						<form method="post" action="loginSession" class="register-form">
+						<form method="post" action="login" class="register-form">
 							<div class="form-group">
 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input

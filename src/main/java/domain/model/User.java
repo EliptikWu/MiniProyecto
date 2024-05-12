@@ -11,8 +11,8 @@ import java.io.Serializable;
 @ToString
 @Builder
 @SessionScoped
-public class Client implements Serializable {
-    private Long idClient;
+public class User implements Serializable {
+    private Long idUser;
     private String name;
     private String email;
     private String telephone;

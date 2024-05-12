@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum VehicleType {
-    CARRO("carro"), MOTO("moto");
+    CARRO("Carro"), MOTO("Moto");
 
     private final String name;
 
