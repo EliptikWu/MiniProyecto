@@ -28,6 +28,13 @@ public class UserRepositoryJdbcImpl implements Repository<UserDto> {
         user.setTelephone(rs.getString("telephone"));
         return UserMapper.mapFrom(user);
     }
+
+    /**
+     * Retrieves a list of users from the database.
+     *
+     * @return a list of UserDto objects that represent users.
+     * @throws ServiceJdbcException if an error occurs while trying to list database information.
+     */
     @Override
     public List<UserDto> list(){
         List<UserDto> userList = new ArrayList<>();
@@ -44,6 +51,13 @@ public class UserRepositoryJdbcImpl implements Repository<UserDto> {
         return userList;
     }
 
+    /**
+     * Retrieves a user from the database by its ID.
+     *
+     * @param id the ID of the user you want to retrieve.
+     * @return a UserDto object that represents the user with the specified ID.
+     * @throws ServiceJdbcException if an error occurs while trying to find the information in the database.
+     */
     @Override
     public UserDto byId(Long id) {
         UserDto user = null;
@@ -60,6 +74,11 @@ public class UserRepositoryJdbcImpl implements Repository<UserDto> {
         return user;
     }
 
+    /**
+     * Updates a user in the database.
+     *
+     * @param user the UserDto object that contains the updated user information.
+     */
     @Override
     public void update(UserDto user) {
         String sql;
@@ -82,6 +101,12 @@ public class UserRepositoryJdbcImpl implements Repository<UserDto> {
         }
     }
 
+    /**
+     * Delete a user from the database by its ID.
+     *
+     * @param id the ID of the user to delete.
+     * @throws ServiceJdbcException if an error occurs while trying to delete information from the database.
+     */
     @Override
     public void delete(Long id) {
         try (PreparedStatement pstmt = conn.prepareStatement("DELETE FROM user WHERE idUser = ?")) {
@@ -91,6 +116,13 @@ public class UserRepositoryJdbcImpl implements Repository<UserDto> {
             throw new ServiceJdbcException("Unable to delete info");
         }
     }
+
+    /**
+     * Save a new user or update an existing one in the database.
+     *
+     * @param userDto the UserDto object that contains the user information to save or update.
+     * @throws ServiceJdbcException if an error occurs while trying to save or update information in the database.
+     */
     @Override
     public void save(UserDto userDto){
         String sql;

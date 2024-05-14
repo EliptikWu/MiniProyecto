@@ -18,8 +18,10 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @RequestScoped
 @Named("Reservation")
+
 public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto> {
     @Inject
     @MysqlConn
@@ -44,6 +46,13 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
         reservation.setVehicle(vehicle);
         return reservation;
     }
+
+    /**
+     * Retrieves a list of reservations from the database.
+     *
+     * @return a list of ReservationDto objects that represent reservations.
+     * @throws ServiceJdbcException if an error occurs while trying to list database information.
+     */
     @Override
     public List<ReservationDto> list(){
         List<Reservation> reservationList = new ArrayList<>();
@@ -60,6 +69,13 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
         return ReservationMapper.mapFrom(reservationList);
     }
 
+    /**
+     * Retrieves a reservation from the database by its ID.
+     *
+     * @param id the ID of the reservation you want to retrieve.
+     * @return a ReservationDto object that represents the reservation with the specified ID.
+     * @throws ServiceJdbcException if an error occurs while trying to find the information in the database.
+     */
     @Override
     public ReservationDto byId(Long id) {
         Reservation reservation = null;
@@ -76,6 +92,11 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
         return ReservationMapper.mapFrom(reservation);
     }
 
+    /**
+     * Updates a reservation in the database.
+     *
+     * @param reservation the ReservationDto object that contains the updated reservation information.
+     */
     @Override
     public void update(ReservationDto reservation) {
         String sql;
@@ -99,6 +120,12 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
         }
     }
 
+    /**
+     * Delete a reservation from the database by its ID.
+     *
+     * @param id the ID of the reservation to delete.
+     * @throws ServiceJdbcException if an error occurs while trying to delete information from the database.
+     */
     @Override
     public void delete(Long id) {
         try (PreparedStatement pstmt = conn.prepareStatement("DELETE FROM reservation WHERE idReservation=?")) {
@@ -109,6 +136,12 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
         }
     }
 
+    /**
+     * Save a new reservation or update an existing one in the database.
+     *
+     * @param reservationDto the ReservationDto object that contains the reservation information to save or update.
+     * @throws ServiceJdbcException if an error occurs while trying to save or update information in the database.
+     */
     @Override
     public void save(ReservationDto reservationDto) {
         String sql;

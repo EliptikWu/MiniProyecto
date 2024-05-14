@@ -1,5 +1,6 @@
 package controllers;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
@@ -21,20 +22,19 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
-
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     final static String USERNAME = "admin";
     final static String PASSWORD = "12345";
     @Inject
     @Named("login")
-    LoginService auth;
+    private LoginService auth;
     @Inject
-    UserServiceImpl cService;
+    private UserServiceImpl cService;
     @Inject
-    VehicleServiceImpl vService;
+    private VehicleServiceImpl vService;
     @Inject
-    ReservationServiceImpl rService;
+    private ReservationServiceImpl rService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
@@ -46,12 +46,16 @@ public class LoginServlet extends HttpServlet {
             Cookie usernameCookie = new Cookie("username", username);
             resp.addCookie(usernameCookie);
             Connection conn = (Connection) req.getAttribute("conn");
+
             List<UserDto> userDtoList = cService.list();
             getServletContext().setAttribute("userDtoList", userDtoList);
+
             List<VehicleDto> vehicleDtoList = vService.list();
             getServletContext().setAttribute("vehicleDtoList", vehicleDtoList);
+
             List<ReservationDto> reservationDtoList = rService.list();
             getServletContext().setAttribute("reservationDtoList", reservationDtoList);
+
             try (PrintWriter out = resp.getWriter()) {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");

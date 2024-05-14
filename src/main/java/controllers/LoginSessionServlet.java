@@ -1,5 +1,6 @@
 package controllers;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import service.impl.LoginServiceSessionImpl;
@@ -14,13 +15,13 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
-@WebServlet("/loginSession")
+@RequestScoped
 public class LoginSessionServlet extends HttpServlet {
 
     final static String USERNAME = "admin";
     final static String PASSWORD = "12345";
     @Inject
-    @Named("loginSession")
+    @Named("login")
     private LoginService auth;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -30,7 +31,7 @@ public class LoginSessionServlet extends HttpServlet {
         if (USERNAME.equals(username) && PASSWORD.equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
-            resp.sendRedirect(req.getContextPath() + "/main.jsp");
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
         } else {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Sorry, you are not authorized to enter this page.!");
         }

@@ -2,12 +2,15 @@ package controllers;
 
 import domain.model.User;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mapping.dtos.UserDto;
 import mapping.mapper.UserMapper;
+import repository.Repository;
 import repository.impl.UserRepositoryJdbcImpl;
 import service.impl.UserServiceImpl;
 import java.io.IOException;
@@ -18,12 +21,12 @@ import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "userController", value = "/user-form")
-public class UserController {
-
+public class UserController extends HttpServlet {
+        @Inject
+        @Named("User")
+        private Repository<UserDto> userRepository;
         @Inject
         UserServiceImpl service;
-        @Inject
-        UserRepositoryJdbcImpl userRepository;
 
         private String message;
 
@@ -80,7 +83,7 @@ public class UserController {
                 req.setAttribute("errors", errors);
                 req.setAttribute("errorsmap", errorsmap);
 
-                req.getServletContext().getRequestDispatcher("/user-form.jsp").forward(req, resp);
+                req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
             }
         }
         private Map<String,String> getErrors2(String name,String email, String telephone) {
