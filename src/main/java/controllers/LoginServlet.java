@@ -57,17 +57,16 @@ public class LoginServlet extends HttpServlet {
                 out.println("<html>");
                 out.println(" <head>");
                 out.println(" <meta charset=\"UTF-8\">");
-                out.println(" <title>Login correcto</title>");
+                out.println(" <title>Correct login</title>");
                 out.println(" </head>");
                 out.println(" <body>");
-                out.println(" <h1>Login correcto!</h1>");
-                out.println(" <h3>Hola " + username + " has iniciado sesión con éxito!</h3>");
+                out.println(" <h1>Correct login!</h1>");
+                out.println(" <h3>Hi " + username + " you have logged in successfully!</h3>");
                 out.println(" </body>");
                 out.println("</html>");
             }
         } else {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos no " +
-                    "esta autorizado para ingresar a esta página!");
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Sorry, you are not authorized to enter this page!");
         }
     }
 
@@ -81,13 +80,13 @@ public class LoginServlet extends HttpServlet {
                 out.println("<html>");
                 out.println(" <head>");
                 out.println(" <meta charset=\"UTF-8\">");
-                out.println(" <title>Hola " + cookieOptional.get() + "</title>");
+                out.println(" <title>Hi " + cookieOptional.get() + "</title>");
                 out.println(" </head>");
                 out.println(" <body>");
-                out.println(" <h1>Hola " + cookieOptional.get() + " has iniciado sesión con éxito!</h1>");
+                out.println(" <h1>Hi " + cookieOptional.get() + " you have logged in successfully!</h1>");
                 out.println("<p><a href='" + req.getContextPath() +
-                        "/index.html'>volver</a></p>");
-                out.println("<p><a href='" + req.getContextPath() + "/logout'>cerrar sesión</a></p>");
+                        "/index.html'>Return</a></p>");
+                out.println("<p><a href='" + req.getContextPath() + "/logout'>Sign off</a></p>");
                 out.println(" </body>");
                 out.println("</html>");
             }

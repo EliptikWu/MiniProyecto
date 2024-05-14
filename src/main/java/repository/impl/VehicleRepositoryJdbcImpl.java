@@ -4,6 +4,7 @@ import annotations.MysqlConn;
 import domain.enums.VehicleAvailable;
 import domain.enums.VehicleType;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import mapping.dtos.VehicleDto;
@@ -15,8 +16,8 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@ApplicationScoped
-@Named("Teacher")
+@RequestScoped
+@Named("Vehicle")
 public class VehicleRepositoryJdbcImpl implements Repository<VehicleDto> {
     @Inject
     @MysqlConn

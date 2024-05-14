@@ -3,6 +3,7 @@ package repository.impl;
 import annotations.MysqlConn;
 import domain.enums.VehicleAvailable;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import mapping.dtos.ReservationDto;
@@ -17,7 +18,7 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@ApplicationScoped
+@RequestScoped
 @Named("Reservation")
 public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto> {
     @Inject

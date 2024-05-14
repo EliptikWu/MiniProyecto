@@ -2,6 +2,7 @@ package repository.impl;
 
 import annotations.MysqlConn;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import mapping.dtos.UserDto;
@@ -13,7 +14,7 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@ApplicationScoped
+@RequestScoped
 @Named("User")
 public class UserRepositoryJdbcImpl implements Repository<UserDto> {
     @Inject

@@ -80,7 +80,7 @@ public class UserController {
                 req.setAttribute("errors", errors);
                 req.setAttribute("errorsmap", errorsmap);
 
-                req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
+                req.getServletContext().getRequestDispatcher("/user-form.jsp").forward(req, resp);
             }
         }
         private Map<String,String> getErrors2(String name,String email, String telephone) {

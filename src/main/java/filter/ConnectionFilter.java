@@ -30,7 +30,7 @@ import java.sql.SQLException;
                     chain.doFilter(request, response);
                     connRequest.commit();
                 } catch (ServiceJdbcException e) {
-                    //  connRequest.rollback();
+                    connRequest.rollback();
                     ((HttpServletResponse)response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                     e.printStackTrace();
                 }

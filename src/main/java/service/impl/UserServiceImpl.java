@@ -10,8 +10,9 @@ import service.Service;
 import java.util.List;
 
 /**
+ * Implementation of the service for user management.
  *
- * @author <a href=""
+ * @author <a href="https://github.com/EliptikWu"
  */
 @ApplicationScoped
 public class UserServiceImpl implements Service<UserDto> {
@@ -20,8 +21,8 @@ public class UserServiceImpl implements Service<UserDto> {
     private Repository<UserDto> userRepository;
 
     /**
-     *
-     * @return
+     * Returns a list of UserDto objects.
+     * @return  a list of UserDto objects that represent users.
      */
     @Override
     public List<UserDto> list() {
@@ -29,20 +30,31 @@ public class UserServiceImpl implements Service<UserDto> {
     }
 
     /**
+     * Returns a UserDto object corresponding to the specified ID.
      *
-     * @param id
-     * @return
+     * @param id the ID of the user you want to recover.
+     * @return a UserDto object that represents the user with the specified ID.
      */
     @Override
     public UserDto byId(Long id) {
         return userRepository.byId(id);
     }
 
+    /**
+     * Updates a user's information.
+     *
+     * @param t the UserDto object that contains the updated user information.
+     */
     @Override
     public void update(UserDto t) {
         userRepository.update(t);
     }
 
+    /**
+     * Delete a user based on their ID.
+     *
+     * @param id the ID of the user to delete.
+     */
     @Override
     public void delete(Long id) {
         userRepository.delete(id);

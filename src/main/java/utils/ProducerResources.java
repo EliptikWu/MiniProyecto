@@ -35,6 +35,6 @@ public class ProducerResources {
     public void close(@Disposes @MysqlConn Connection connection) throws
             SQLException {
         connection.close();
-        log.info("cerrando la conexión a la base de datos mysql!");
+        log.info("closing connection to mysql database!");
     }
 }

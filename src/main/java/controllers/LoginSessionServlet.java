@@ -32,8 +32,7 @@ public class LoginSessionServlet extends HttpServlet {
             session.setAttribute("username", username);
             resp.sendRedirect(req.getContextPath() + "/main.jsp");
         } else {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo sentimos no " +
-                    "esta autorizado para ingresar a esta página!");
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Sorry, you are not authorized to enter this page.!");
         }
     }
 
@@ -48,16 +47,15 @@ public class LoginSessionServlet extends HttpServlet {
                 out.println("<html>");
                 out.println(" <head>");
                 out.println(" <meta charset=\"UTF-8\">");
-                out.println(" <title>Hola " + usernameOptional.get() +
+                out.println(" <title>Hi " + usernameOptional.get() +
                         "</title>");
                 out.println(" </head>");
                 out.println(" <body>");
-                out.println(" <h1>Hola " + usernameOptional.get() + " has " +
-                        "iniciado sesión con éxito!</h1>");
+                out.println(" <h1>Hi " + usernameOptional.get() + " you have logged in successfully!</h1>");
                 out.println("<p><a href='" + req.getContextPath() +
-                        "/index.html'>volver</a></p>");
+                        "/index.html'>Return</a></p>");
                 out.println("<p><a href='" + req.getContextPath() +
-                        "/logout'>cerrar sesión</a></p>");
+                        "/logout'>Sign off</a></p>");
                 out.println(" </body>");
                 out.println("</html>");
             }

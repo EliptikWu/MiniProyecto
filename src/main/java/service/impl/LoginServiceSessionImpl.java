@@ -10,6 +10,12 @@ import java.util.Optional;
 @ApplicationScoped
 @Named("loginSession")
 public class LoginServiceSessionImpl implements LoginService {
+    /**
+     * Retrieves the username stored in the session from the HTTP request.
+     *
+     * @param request the HttpServletRequest object containing the HTTP request.
+     * @return an Optional object containing the username if present in the session, or empty if not.
+     */
     @Override
     public Optional<String> getUsername(HttpServletRequest request) {
         HttpSession session = request.getSession();
