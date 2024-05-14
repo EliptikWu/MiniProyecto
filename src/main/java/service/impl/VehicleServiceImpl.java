@@ -40,13 +40,13 @@ public class VehicleServiceImpl implements Service<VehicleDto> {
     }
 
     /**
-     * Updates a vehicle's information.
+     * Saves a vehicle's information.
      *
-     * @param t the VehicleDto object that contains the updated vehicle information.
+     * @param t the VehicleDto object that contains the saved vehicle information.
      */
     @Override
-    public void update(VehicleDto t) {
-        vehicleRepository.update(t);
+    public void save(VehicleDto t) {
+        vehicleRepository.save(t);
     }
 
     /**

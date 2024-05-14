@@ -22,7 +22,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
-@WebServlet("/login")
+@WebServlet("/login2")
 public class LoginServlet extends HttpServlet {
     final static String USERNAME = "admin";
     final static String PASSWORD = "12345";
@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
     @Named("login")
     private LoginService auth;
     @Inject
-    private UserServiceImpl cService;
+    private UserServiceImpl uService;
     @Inject
     private VehicleServiceImpl vService;
     @Inject
@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             resp.addCookie(usernameCookie);
             Connection conn = (Connection) req.getAttribute("conn");
 
-            List<UserDto> userDtoList = cService.list();
+            List<UserDto> userDtoList = uService.list();
             getServletContext().setAttribute("userDtoList", userDtoList);
 
             List<VehicleDto> vehicleDtoList = vService.list();
@@ -89,7 +89,7 @@ public class LoginServlet extends HttpServlet {
                 out.println(" <body>");
                 out.println(" <h1>Hi " + cookieOptional.get() + " you have logged in successfully!</h1>");
                 out.println("<p><a href='" + req.getContextPath() +
-                        "/index.html'>Return</a></p>");
+                        "/main.html'>Return</a></p>");
                 out.println("<p><a href='" + req.getContextPath() + "/logout'>Sign off</a></p>");
                 out.println(" </body>");
                 out.println("</html>");

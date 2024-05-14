@@ -97,7 +97,7 @@ public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto>
      *
      * @param reservation the ReservationDto object that contains the updated reservation information.
      */
-    @Override
+    //@Override
     public void update(ReservationDto reservation) {
         String sql;
         if (reservation.idReservation() != null && reservation.idReservation() > 0) {

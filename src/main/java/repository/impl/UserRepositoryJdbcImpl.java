@@ -79,7 +79,7 @@ public class UserRepositoryJdbcImpl implements Repository<UserDto> {
      *
      * @param user the UserDto object that contains the updated user information.
      */
-    @Override
+    //@Override
     public void update(UserDto user) {
         String sql;
         if (user.idUser() != null && user.idUser() > 0) {

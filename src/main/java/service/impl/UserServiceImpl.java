@@ -41,13 +41,13 @@ public class UserServiceImpl implements Service<UserDto> {
     }
 
     /**
-     * Updates a user's information.
+     * Saves a user's information.
      *
-     * @param t the UserDto object that contains the updated user information.
+     * @param t the UserDto object that contains the saved user information.
      */
     @Override
-    public void update(UserDto t) {
-        userRepository.update(t);
+    public void save(UserDto t) {
+        userRepository.save(t);
     }
 
     /**

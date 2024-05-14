@@ -40,13 +40,13 @@ public class ReservationServiceImpl implements Service<ReservationDto> {
     }
 
     /**
-     * Updates a reservation's information.
+     * saves a reservation's information.
      *
-     * @param t the ReservationDto object that contains the updated reservation information.
+     * @param t the ReservationDto object that contains the saved reservation information.
      */
     @Override
-    public void update(ReservationDto t) {
-        reservationRepository.update(t);
+    public void save(ReservationDto t) {
+        reservationRepository.save(t);
     }
 
     /**

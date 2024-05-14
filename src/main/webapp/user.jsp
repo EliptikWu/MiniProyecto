@@ -11,14 +11,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Formulario Usarios</title>
+    <title>Formulario Usuarios</title>
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
 " rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<h3><%= "Formulario Usarios" %>
+<h3><%= "Formulario Usuarios" %>
 </h3>
 <%
     if(errorsmap != null && errorsmap.size()>0){
@@ -29,7 +29,7 @@
     <%}%>
 </ul>
 <%}%>
-<form action="student-form" method="post">
+<form action="user-form" method="post">
     <div class="row mb-3">
         <label for="name" class="col-form-label col-sm-2">Name</label>
         <div class="col-sm-4"><input type="text" name="name" id="name" class="form-control" value="${param.name}"></div>

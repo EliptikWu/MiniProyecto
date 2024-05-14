@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-    @WebFilter("/*")
+/**@WebFilter("/*")
     public class ConnectionFilter implements Filter {
         @Inject
         @MysqlConn
@@ -38,5 +38,5 @@ import java.sql.SQLException;
                 throwables.printStackTrace();
             }
         }
-    }
+    }**/
 

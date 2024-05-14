@@ -82,7 +82,7 @@ public class VehicleRepositoryJdbcImpl implements Repository<VehicleDto> {
      *
      * @param vehicle the VehicleDto object that contains the updated vehicle information.
      */
-    @Override
+//  @Override
     public void update(VehicleDto vehicle) {
         String sql;
         if (vehicle.idVehicle() != null && vehicle.idVehicle() > 0) {

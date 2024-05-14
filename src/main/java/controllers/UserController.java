@@ -22,11 +22,10 @@ import java.util.Map;
 
 @WebServlet(name = "userController", value = "/user-form")
 public class UserController extends HttpServlet {
-        @Inject
-        @Named("User")
-        private Repository<UserDto> userRepository;
-        @Inject
-        UserServiceImpl service;
+
+        private UserRepositoryJdbcImpl userRepository;
+
+        private UserServiceImpl service;
 
         private String message;
 
@@ -53,11 +52,11 @@ public class UserController extends HttpServlet {
                     .email(email)
                     .telephone(telephone).build();
             UserDto userDto = UserMapper.mapFrom(user);
-            service.update(userDto);
+            service.save(userDto);
             System.out.println(service.list());
             List<String> errors = getErrors(name, email, telephone);
             Map<String, String> errorsmap = getErrors2(name, email, telephone);
-            service.update(userDto);
+            service.save(userDto);
             System.out.println(service.list());
             if (errorsmap.isEmpty()) {
                 try (PrintWriter out = resp.getWriter()) {

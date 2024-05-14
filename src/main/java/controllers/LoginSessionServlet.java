@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Optional;
 @RequestScoped
+@WebServlet("/login")
 public class LoginSessionServlet extends HttpServlet {
 
     final static String USERNAME = "admin";
@@ -31,7 +32,7 @@ public class LoginSessionServlet extends HttpServlet {
         if (USERNAME.equals(username) && PASSWORD.equals(password)) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
-            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            resp.sendRedirect(req.getContextPath() + "/main.html");
         } else {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Sorry, you are not authorized to enter this page.!");
         }
@@ -54,7 +55,7 @@ public class LoginSessionServlet extends HttpServlet {
                 out.println(" <body>");
                 out.println(" <h1>Hi " + usernameOptional.get() + " you have logged in successfully!</h1>");
                 out.println("<p><a href='" + req.getContextPath() +
-                        "/index.html'>Return</a></p>");
+                        "/main.html'>Return</a></p>");
                 out.println("<p><a href='" + req.getContextPath() +
                         "/logout'>Sign off</a></p>");
                 out.println(" </body>");
