@@ -14,7 +14,7 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@RequestScoped
+@ApplicationScoped
 @Named("User")
 public class UserRepositoryJdbcImpl implements Repository<UserDto> {
     @Inject

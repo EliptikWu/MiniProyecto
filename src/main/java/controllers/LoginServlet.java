@@ -28,13 +28,13 @@ public class LoginServlet extends HttpServlet {
     final static String PASSWORD = "12345";
     @Inject
     @Named("login")
-    private LoginService auth;
+    LoginService auth;
     @Inject
-    private UserServiceImpl uService;
+    UserServiceImpl uService;
     @Inject
-    private VehicleServiceImpl vService;
+    VehicleServiceImpl vService;
     @Inject
-    private ReservationServiceImpl rService;
+    ReservationServiceImpl rService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,

@@ -19,7 +19,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequestScoped
+@ApplicationScoped
 @Named("Reservation")
 
 public class ReservationRepositoryJdbcImpl implements Repository<ReservationDto> {

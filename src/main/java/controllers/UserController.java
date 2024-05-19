@@ -23,8 +23,9 @@ import java.util.Map;
 @WebServlet(name = "userController", value = "/user-form")
 public class UserController extends HttpServlet {
 
+        @Inject
         private UserRepositoryJdbcImpl userRepository;
-
+        @Inject
         private UserServiceImpl service;
 
         private String message;

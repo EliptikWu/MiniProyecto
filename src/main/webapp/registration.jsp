@@ -22,7 +22,7 @@
 			<div class="container">
 				<div class="signup-content">
 					<div class="signup-form">
-						<h2 class="form-title">Sign up</h2>
+						<h2 class="form-title">Registration up</h2>
 					
 						<form method="" action="" class="register-form"
 							id="register-form">

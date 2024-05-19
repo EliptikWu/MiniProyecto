@@ -16,7 +16,7 @@ import repository.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@RequestScoped
+@ApplicationScoped
 @Named("Vehicle")
 public class VehicleRepositoryJdbcImpl implements Repository<VehicleDto> {
     @Inject
